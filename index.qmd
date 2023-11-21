@@ -6,6 +6,7 @@ format:
   rladies-revealjs:
     footer: "Slides por [Beatriz Milz](https://beamilz.com) (@BeaMilz), feito com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html) e [Quarto R-Ladies Theme](https://github.com/beatrizmilz/quarto-rladies-theme#quarto-r-ladies-theme)."
     logo: "https://github.com/beatrizmilz/2023-11-rday-colombia-purrr/blob/main/_extensions/beatrizmilz/rladies/logo.png?raw=true"
+    code-link: true  
 incremental: false
 knitr:
   opts_chunk: 
@@ -13,6 +14,13 @@ knitr:
 ---
 
 ## Who am I? {.center}
+
+```{r}
+#| echo: false
+#| eval: true
+library(tidyverse)
+```
+
 
 ```{css, echo = FALSE}
 .reveal pre code {
@@ -33,21 +41,112 @@ knitr:
 
     -   Email: [milz.bea@gmail.com](mailto:milz.bea@gmail.com)
     -   More in my website: [beamilz.com](https://beamilz.com/about-es)
-    
-## My favorite tasks with R {.center}
 
-- Create reproducible reports
+## Plan for today {.center}
 
-- Automate tasks
+- What is functional programming?
 
+- What is the `{purrr}` package?
+
+- What are **my** favorite `{purrr}` functions?
+
+- How can you use `{purrr}` in your workflow?
 
 # Let's go!
 
-## Functional programming in R
+## Functional programming in R {.center}
 
 -   Functional programming is a programming paradigm
 
 -   Functions are really important in this context!
+
+
+## Let's remember: what is a function in R?
+
+-  A function is a set of instructions that takes an input (arguments) and returns an output.
+
+- You can encapsulate and reuse code.
+
+## Example
+
+Instead of writing this command in the terminal:
+
+```{bash}
+date
+```
+You can use this function in R:
+
+```{r}
+Sys.time()
+```
+
+## We use functions all the time!
+
+- `library()`
+- `install.packages()`
+- `c()`
+- `help()`
+- `mean()`
+- `sum()`
+- `paste()`
+- ...
+
+## Structure of a function
+
+A function has:
+  
+  - a name
+  
+  - one or more arguments
+
+  - a body
+
+  - a return value (it is the last line of the function)
+  
+```r
+name_of_function <- function(argument1, argument2, ...) {
+  body
+  return(value)
+}
+```
+  
+
+## Simple example of how to create a function
+
+```{r}
+#| code-line-numbers: "1|2-3|3"
+convert_reais_to_us_dollars <- function(reais) {
+  us_dollar <- reais / 4.87
+  scales::dollar(us_dollar)
+}
+```
+
+- Minimum wage in Brazil per month in US Dollars:
+
+```{r}
+convert_reais_to_us_dollars(1320)
+```
+
+## Example of a more useful function
+
+- In Brazil, we use the date format `dd/mm/yyyy`: 21/01/2021.
+
+- We can use the function `as.Date()` to convert the date format, but we need to specify the format of the date.
+
+```{r}
+as.Date("21/01/2021", format = "%d/%m/%Y")
+```
+
+- We can create a function to do this for us!
+
+```{r}
+convert_date_br <- function(date){
+  as.Date(date, format = "%d/%m/%Y")
+}
+convert_date_br("14/10/2023")
+```
+
+# Back to functional programming!
 
 ## Simple example in R
 
@@ -115,15 +214,14 @@ install.packages("purrr")
 
 - We will focus on some today :)
 
-    - `map()`
+    - `purrr::map()`
 
-    - `map_vec()`
+    - `purrr::map_vec()`
 
-    - `list_c()`, `list_rbind()`, `list_cbind()`
+    - `purrr::list_c()`, `purrr::list_rbind()`, `purrr::list_cbind()`
 
-    - `pluck()`
+    - `purrr::pluck()`
 
-    - `set_names()`
     
 - Examples on daily tasks!
     
@@ -134,9 +232,9 @@ library(tidyverse)
 ```
     
 
-## `map()`
+## `purrr::map()`
 
--   `map()` is the most important function in purrr
+-   `purrr::map()` is the most important function in purrr
 
 - Given an object (can be a vector or a list) we want to apply a function to each element of that object.
 
@@ -151,7 +249,7 @@ map(vector_or_list, name_of_the_function)
 
 - There are many functions that start with `map_*()` and have similar behavior
 
-##  Simple example of `map()`
+##  Simple example of `purrr::map()`
 
 ```{r}
 # Vector that we want to apply the function
@@ -163,7 +261,7 @@ map(countries_mercosul, str_to_upper)
 ## What if I want a vector to be returned? {.center}
 
 
-## We can use `map_vec()`!
+## We can use `purrr::map_vec()`!
 
 -  `map_vec()` is a variant of `map()` that always returns a vector!
 
@@ -177,7 +275,7 @@ map_vec(countries_mercosul, str_to_upper)
 
 
 
-## We also can use `list_c()`!
+## We also can use `purrr::list_c()`!
 
 - `list_c()` is a function that takes a **list** and returns a **vector**
 
@@ -187,7 +285,7 @@ map_vec(countries_mercosul, str_to_upper)
 map(countries_mercosul, str_to_upper) |> list_c()
 ```
 
-## `pluck()`
+## `purrr::pluck()`
 
 - `pluck()` is a function that extracts a single element from a list
 
@@ -200,7 +298,7 @@ map(countries_mercosul, str_to_upper)
 ```
 
 
-## Example of `pluck()`
+## Example of `purrr::pluck()`
 
 ```{r}
 map(countries_mercosul, str_to_upper) |> pluck(1)
@@ -271,16 +369,6 @@ map(countries_mercosul, str_to_upper)[[5]]
 ## `list_rbind()`, `list_cbind()`
 
 - `list_rbind()` and `list_cbind()` are functions that bind lists together (by row or column) and returns a tibble.
-
-TO DO
-
-## `set_names()`
-
-- `set_names()` is a function that sets names to a vector or list
-
-```{r}
-
-```
 
 TO DO
 

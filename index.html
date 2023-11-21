@@ -7,17 +7,17 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
-
-  <meta name="author" content="Beatriz Milz">
-  <title>Purrr-fecting your R workflow</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
-  <style>
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="author" content="Beatriz Milz">
+<title>Purrr-fecting your R workflow</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,12 +95,12 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
+<link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -297,7 +297,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -389,8 +389,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#562457" class="quarto-title-block center">
-  <h1 class="title">Purrr-fecting your R workflow</h1>
+<section id="title-slide" data-background-color="#562457" class="quarto-title-block center"><h1 class="title">Purrr-fecting your R workflow</h1>
   <p class="subtitle">An introduction to functional programming <br> R Day Colombia</p>
 
 <div class="quarto-title-authors">
@@ -401,9 +400,7 @@
 </div>
 </div>
 
-</section>
-<section id="who-am-i" class="slide level2 center">
-<h2>Who am I?</h2>
+</section><section id="who-am-i" class="slide level2 center"><h2>Who am I?</h2>
 <div class="cell">
 <style type="text/css">
 .reveal pre code {
@@ -416,81 +413,151 @@
 <li><p>PhD Candidate in Environmental Sciences at the University of Sao Paulo, Brazil</p></li>
 <li><p>Teacher and Consultant at <a href="https://curso-r.com/">Curso-R</a></p></li>
 <li><p>Tidyverse certified instructor - Posit</p></li>
-<li><p>Contact:</p>
+<li>
+<p>Contact:</p>
 <ul>
-<li>Email: <a href="mailto:milz.bea@gmail.com">milz.bea@gmail.com</a></li>
-<li>More in my website: <a href="https://beamilz.com/about-es">beamilz.com</a></li>
-</ul></li>
+<li>Email: <a href="mailto:milz.bea@gmail.com">milz.bea@gmail.com</a>
+</li>
+<li>More in my website: <a href="https://beamilz.com/about-es">beamilz.com</a>
+</li>
 </ul>
-</section>
-<section id="my-favorite-tasks-with-r" class="slide level2 center">
-<h2>My favorite tasks with R</h2>
+</li>
+</ul></section><section id="plan-for-today" class="slide level2 center"><h2>Plan for today</h2>
 <ul>
-<li><p>Create reproducible reports</p></li>
-<li><p>Automate tasks</p></li>
-</ul>
-</section>
-<section>
-<section id="lets-go" class="title-slide slide level1 center">
-<h1>Let’s go!</h1>
+<li><p>What is functional programming?</p></li>
+<li><p>What is the <a href="https://purrr.tidyverse.org/">purrr</a> package?</p></li>
+<li><p>What are <strong>my</strong> favorite <a href="https://purrr.tidyverse.org/">purrr</a> functions?</p></li>
+<li><p>How can you use <a href="https://purrr.tidyverse.org/">purrr</a> in your workflow?</p></li>
+</ul></section><section><section id="lets-go" class="title-slide slide level1 center"><h1>Let’s go!</h1>
 
-</section>
-<section id="functional-programming-in-r" class="slide level2">
-<h2>Functional programming in R</h2>
+</section><section id="functional-programming-in-r" class="slide level2 center"><h2>Functional programming in R</h2>
 <ul>
 <li><p>Functional programming is a programming paradigm</p></li>
 <li><p>Functions are really important in this context!</p></li>
+</ul></section><section id="lets-remember-what-is-a-function-in-r" class="slide level2"><h2>Let’s remember: what is a function in R?</h2>
+<ul>
+<li><p>A function is a set of instructions that takes an input (arguments) and returns an output.</p></li>
+<li><p>You can encapsulate and reuse code.</p></li>
+</ul></section><section id="example" class="slide level2"><h2>Example</h2>
+<p>Instead of writing this command in the terminal:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tue Nov 21 10:06:08 -03 2023</code></pre>
+</div>
+</div>
+<p>You can use this function in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2023-11-21 10:06:08 -03"</code></pre>
+</div>
+</div>
+</section><section id="we-use-functions-all-the-time" class="slide level2"><h2>We use functions all the time!</h2>
+<ul>
+<li><code><a href="https://rdrr.io/r/base/library.html">library()</a></code></li>
+<li><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/c.html">c()</a></code></li>
+<li><code><a href="https://rdrr.io/r/utils/help.html">help()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code></li>
+<li>…</li>
+</ul></section><section id="structure-of-a-function" class="slide level2"><h2>Structure of a function</h2>
+<p>A function has:</p>
+<ul>
+<li><p>a name</p></li>
+<li><p>one or more arguments</p></li>
+<li><p>a body</p></li>
+<li><p>a return value (it is the last line of the function)</p></li>
 </ul>
-</section>
-<section id="simple-example-in-r" class="slide level2">
-<h2>Simple example in R</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>name_of_function <span class="ot">&lt;-</span> <span class="cf">function</span>(argument1, argument2, ...) {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  body</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">return</span>(value)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="simple-example-of-how-to-create-a-function" class="slide level2"><h2>Simple example of how to create a function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1|2-3|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>convert_reais_to_us_dollars <span class="ot">&lt;-</span> <span class="cf">function</span>(reais) {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  us_dollar <span class="ot">&lt;-</span> reais <span class="sc">/</span> <span class="fl">4.87</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  scales<span class="sc">::</span><span class="fu">dollar</span>(us_dollar)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Minimum wage in Brazil per month in US Dollars:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">convert_reais_to_us_dollars</span>(<span class="dv">1320</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "$271.05"</code></pre>
+</div>
+</div>
+</section><section id="example-of-a-more-useful-function" class="slide level2"><h2>Example of a more useful function</h2>
+<ul>
+<li><p>In Brazil, we use the date format <code>dd/mm/yyyy</code>: 21/01/2021.</p></li>
+<li><p>We can use the function <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> to convert the date format, but we need to specify the format of the date.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">as.Date</span>(<span class="st">"21/01/2021"</span>, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-01-21"</code></pre>
+</div>
+</div>
+<ul>
+<li>We can create a function to do this for us!</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>convert_date_br <span class="ot">&lt;-</span> <span class="cf">function</span>(date){</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">as.Date</span>(date, <span class="at">format =</span> <span class="st">"%d/%m/%Y"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>}</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">convert_date_br</span>(<span class="st">"14/10/2023"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2023-10-14"</code></pre>
+</div>
+</div>
+</section></section><section><section id="back-to-functional-programming" class="title-slide slide level1 center"><h1>Back to functional programming!</h1>
+
+</section><section id="simple-example-in-r" class="slide level2"><h2>Simple example in R</h2>
 <ul>
 <li>Non-functional programming</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>z <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb1-4"><a href="#cb1-4"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>z <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb13-4"><a href="#cb13-4"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-</section>
-<section id="simple-example-in-r-1" class="slide level2">
-<h2>Simple example in R</h2>
+</section><section id="simple-example-in-r-1" class="slide level2"><h2>Simple example in R</h2>
 <ul>
 <li>Functional programming</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  x <span class="sc">+</span> y</span>
-<span id="cb3-3"><a href="#cb3-3"></a>}</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  x <span class="sc">+</span> y</span>
+<span id="cb15-3"><a href="#cb15-3"></a>}</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-</section>
-<section id="the-purrr-package" class="slide level2">
-<h2>The purrr package</h2>
+</section><section id="the-purrr-package" class="slide level2"><h2>The purrr package</h2>
 <ul>
 <li><p>A toolbox for functional programming</p></li>
 <li><p>Many of the functions in purrr are alternatives to <code>for</code> loops</p></li>
-<li><p>Code with <code>{purrr}</code> is shorter and clearer than <code>for</code> loops</p></li>
-<li><p>Knowing how to use <code>{purrr}</code> allows you to use the <code>{furrr}</code> package: it has the same syntax, but allows you to run code in parallel</p></li>
+<li><p>Code with <a href="https://purrr.tidyverse.org/">purrr</a> is shorter and clearer than <code>for</code> loops</p></li>
+<li><p>Knowing how to use <a href="https://purrr.tidyverse.org/">purrr</a> allows you to use the <a href="https://github.com/DavisVaughan/furrr">furrr</a> package: it has the same syntax, but allows you to run code in parallel</p></li>
 </ul>
 <div class="footer">
 <p>Source: <a href="https://www.youtube.com/watch?v=EGAs7zuRutY">Hadley Wickham</a></p>
 </div>
-</section>
-<section id="package-version" class="slide level2">
-<h2>Package version</h2>
+</section><section id="package-version" class="slide level2"><h2>Package version</h2>
 <ul>
 <li>Check if the version installed is &gt;= 1.0.0.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">packageVersion</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">packageVersion</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.0.2'</code></pre>
 </div>
@@ -499,54 +566,45 @@
 <li>If not, install the latest version:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">install.packages</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="my-favorite-functions" class="slide level2">
-<h2>My favorite functions</h2>
+</section><section id="my-favorite-functions" class="slide level2"><h2>My favorite functions</h2>
 <ul>
 <li><p>purrr has many functions!</p></li>
 <li><p>Many work similarly.</p></li>
-<li><p>We will focus on some today :)</p>
+<li>
+<p>We will focus on some today :)</p>
 <ul>
-<li><p><code>map()</code></p></li>
-<li><p><code>map_vec()</code></p></li>
-<li><p><code>list_c()</code>, <code>list_rbind()</code>, <code>list_cbind()</code></p></li>
-<li><p><code>pluck()</code></p></li>
-<li><p><code>set_names()</code></p></li>
-</ul></li>
-<li><p>Examples on daily tasks!</p></li>
+<li><p><code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code></p></li>
+<li><p><code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map_vec()</a></code></p></li>
+<li><p><code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_c()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_rbind()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/list_c.html">purrr::list_cbind()</a></code></p></li>
+<li><p><code><a href="https://purrr.tidyverse.org/reference/pluck.html">purrr::pluck()</a></code></p></li>
 </ul>
-</section></section>
-<section>
-<section id="lets-start" class="title-slide slide level1 center">
-<h1>Let’s start!</h1>
+</li>
+<li><p>Examples on daily tasks!</p></li>
+</ul></section></section><section><section id="lets-start" class="title-slide slide level1 center"><h1>Let’s start!</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="map" class="slide level2">
-<h2><code>map()</code></h2>
+</section><section id="purrrmap" class="slide level2"><h2><code>purrr::map()</code></h2>
 <ul>
-<li><p><code>map()</code> is the most important function in purrr</p></li>
+<li><p><code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> is the most important function in purrr</p></li>
 <li><p>Given an object (can be a vector or a list) we want to apply a function to each element of that object.</p></li>
 <li><p>It returns a list</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Structure</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">map</span>(vector_or_list, name_of_the_function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Structure</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">map</span>(vector_or_list, name_of_the_function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>There are many functions that start with <code>map_*()</code> and have similar behavior</li>
-</ul>
-</section>
-<section id="simple-example-of-map" class="slide level2">
-<h2>Simple example of <code>map()</code></h2>
+</ul></section><section id="simple-example-of-purrrmap" class="slide level2"><h2>Simple example of <code>purrr::map()</code>
+</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Vector that we want to apply the function</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>countries_mercosul <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Argentina"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3"></a>                        <span class="st">"Uruguay"</span>, <span class="st">"Paraguay"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Vector that we want to apply the function</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>countries_mercosul <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Brazil"</span>, <span class="st">"Argentina"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>                        <span class="st">"Uruguay"</span>, <span class="st">"Paraguay"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "BRAZIL"
@@ -561,45 +619,37 @@
 [1] "PARAGUAY"</code></pre>
 </div>
 </div>
-</section>
-<section id="what-if-i-want-a-vector-to-be-returned" class="slide level2 center">
-<h2>What if I want a vector to be returned?</h2>
-</section>
-<section id="we-can-use-map_vec" class="slide level2">
-<h2>We can use <code>map_vec()</code>!</h2>
+</section><section id="what-if-i-want-a-vector-to-be-returned" class="slide level2 center"><h2>What if I want a vector to be returned?</h2>
+</section><section id="we-can-use-purrrmap_vec" class="slide level2"><h2>We can use <code>purrr::map_vec()</code>!</h2>
 <ul>
 <li><p><code>map_vec()</code> is a variant of <code>map()</code> that always returns a vector!</p></li>
 <li><p>It is useful when you want to apply a function to each element of a vector and return a vector.</p></li>
 <li><p>It is equivalent to <code>map() |&gt; list_c()</code></p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">map_vec</span>(countries_mercosul, str_to_upper) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">map_vec</span>(countries_mercosul, str_to_upper) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"    "ARGENTINA" "URUGUAY"   "PARAGUAY" </code></pre>
 </div>
 </div>
-</section>
-<section id="we-also-can-use-list_c" class="slide level2">
-<h2>We also can use <code>list_c()</code>!</h2>
+</section><section id="we-also-can-use-purrrlist_c" class="slide level2"><h2>We also can use <code>purrr::list_c()</code>!</h2>
 <ul>
 <li><p><code>list_c()</code> is a function that takes a <strong>list</strong> and returns a <strong>vector</strong></p></li>
 <li><p>It is useful to use after <code>map()</code>, and you want to convert the list into a vector</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">list_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">list_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"    "ARGENTINA" "URUGUAY"   "PARAGUAY" </code></pre>
 </div>
 </div>
-</section>
-<section id="pluck" class="slide level2">
-<h2><code>pluck()</code></h2>
+</section><section id="purrrpluck" class="slide level2"><h2><code>purrr::pluck()</code></h2>
 <ul>
 <li><p><code>pluck()</code> is a function that extracts a single element from a list</p></li>
 <li><p>We will use a simple list for the examples:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "BRAZIL"
@@ -614,35 +664,32 @@
 [1] "PARAGUAY"</code></pre>
 </div>
 </div>
-</section>
-<section id="example-of-pluck" class="slide level2">
-<h2>Example of <code>pluck()</code></h2>
+</section><section id="example-of-purrrpluck" class="slide level2"><h2>Example of <code>purrr::pluck()</code>
+</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ARGENTINA"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "URUGUAY"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "PARAGUAY"</code></pre>
 </div>
 </div>
-</section>
-<section id="why-we-dont-use-instead" class="slide level2">
-<h2>Why we don’t use <code>[[ ]]</code> instead?</h2>
+</section><section id="why-we-dont-use-instead" class="slide level2"><h2>Why we don’t use <code>[[ ]]</code> instead?</h2>
 <ul>
 <li>With <code>pluck()</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"</code></pre>
 </div>
@@ -651,20 +698,19 @@
 <li>With <code>[[ ]]</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"</code></pre>
 </div>
 </div>
-</section>
-<section id="pluck-is-pipeable" class="slide level2">
-<h2>Pluck is <strong>pipeable</strong>! <code>|&gt;</code></h2>
+</section><section id="pluck-is-pipeable" class="slide level2"><h2>Pluck is <strong>pipeable</strong>! <code>|&gt;</code>
+</h2>
 <ul>
 <li>With <code>pluck()</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "BRAZIL"</code></pre>
 </div>
@@ -673,21 +719,19 @@
 <li>With <code>[[ ]]</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2"></a>  .[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2"></a>  .[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: function '[[' not supported in RHS call of a pipe</code></pre>
 </div>
 </div>
-</section>
-<section id="pluck-is-safer" class="slide level2">
-<h2>Pluck is safer!</h2>
+</section><section id="pluck-is-safer" class="slide level2"><h2>Pluck is safer!</h2>
 <ul>
 <li><p>If the element does not exist, it returns <code>NULL</code> instead of an error.</p></li>
 <li><p>With <code>pluck()</code>:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper) <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
@@ -696,42 +740,31 @@
 <li>With <code>[[ ]]</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)[[<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">map</span>(countries_mercosul, str_to_upper)[[<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in map(countries_mercosul, str_to_upper)[[5]]: subscript out of bounds</code></pre>
 </div>
 </div>
-</section>
-<section id="pluck-with-nested-lists" class="slide level2">
-<h2><code>pluck()</code> with nested lists</h2>
+</section><section id="pluck-with-nested-lists" class="slide level2"><h2>
+<code>pluck()</code> with nested lists</h2>
 <ul>
-<li><code>pluck()</code> can be used to extract elements from nested lists. That’s where it shines!</li>
+<li>
+<code>pluck()</code> can be used to extract elements from nested lists. That’s where it shines!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># TO DO!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># TO DO!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="list_rbind-list_cbind" class="slide level2">
-<h2><code>list_rbind()</code>, <code>list_cbind()</code></h2>
+</section><section id="list_rbind-list_cbind" class="slide level2"><h2>
+<code>list_rbind()</code>, <code>list_cbind()</code>
+</h2>
 <ul>
-<li><code>list_rbind()</code> and <code>list_cbind()</code> are functions that bind lists together (by row or column) and returns a tibble.</li>
+<li>
+<code>list_rbind()</code> and <code>list_cbind()</code> are functions that bind lists together (by row or column) and returns a tibble.</li>
 </ul>
 <p>TO DO</p>
-</section>
-<section id="set_names" class="slide level2">
-<h2><code>set_names()</code></h2>
-<ul>
-<li><code>set_names()</code> is a function that sets names to a vector or list</li>
-</ul>
+</section></section><section id="examples-on-my-daily-tasks" class="title-slide slide level1 center"><h1>Examples on my daily tasks</h1>
 <p>TO DO</p>
-</section></section>
-<section id="examples-on-my-daily-tasks" class="title-slide slide level1 center">
-<h1>Examples on my daily tasks</h1>
-<p>TO DO</p>
-</section>
-
-<section id="learn-more" class="title-slide slide level1 center">
-<h1>Learn more</h1>
+</section><section id="learn-more" class="title-slide slide level1 center"><h1>Learn more</h1>
 <ul>
 <li><p><a href="https://purrr.tidyverse.org/index.html">Documentation of the purrr package</a></p></li>
 <li><ul>
@@ -745,26 +778,10 @@
 <p>Slides por <a href="https://beamilz.com">Beatriz Milz</a> (<span class="citation" data-cites="BeaMilz">@BeaMilz</span>), feito com <a href="https://quarto.org/docs/presentations/revealjs/index.html">Quarto</a> e <a href="https://github.com/beatrizmilz/quarto-rladies-theme#quarto-r-ladies-theme">Quarto R-Ladies Theme</a>.</p>
 </div>
 </section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="index_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="index_files/libs/revealjs/plugin/notes/notes.js"></script><script src="index_files/libs/revealjs/plugin/search/search.js"></script><script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="index_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -955,9 +972,7 @@
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -992,9 +1007,7 @@
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1140,6 +1153,6 @@
       }
     });
     </script>
-    
+
 
 </body></html>
