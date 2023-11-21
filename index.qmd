@@ -1,0 +1,245 @@
+---
+title: "Purrr-fecting your R workflow"
+subtitle: "An introduction to functional programming <br> R Day Colombia"
+author: "[Beatriz Milz](https://beamilz.com)"
+format: 
+  rladies-revealjs:
+    footer: "Slides por [Beatriz Milz](https://beamilz.com) (@BeaMilz), feito com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html) e [Quarto R-Ladies Theme](https://github.com/beatrizmilz/quarto-rladies-theme#quarto-r-ladies-theme)."
+incremental: false
+knitr:
+  opts_chunk: 
+    echo: true
+---
+
+```{css}
+.reveal pre code {
+  font-size: 1.5em !important;
+}
+```
+
+
+## Who am I? {.center .aboutmeslide}
+
+-   Co-organizer [R-Ladies São Paulo](https://rladies-sp.org)
+
+-   PhD Candidate in Environmental Sciencesat the University of Sao Paulo, Brazil
+
+-   Teacher and Consultant at [Curso-R](https://curso-r.com/)
+
+-   Tidyverse certified instructor - Posit
+
+-   Contact:
+
+    -   Email: [milz.bea@gmail.com](mailto:milz.bea@gmail.com)
+    -   More in my website: [beamilz.com](https://beamilz.com/about-es)
+    
+## My favorite tasks with R {.center}
+
+- Create reproducible reports
+
+- Automate tasks
+
+
+# Let's go!
+
+## Functional programming in R
+
+-   Functional programming is a programming paradigm
+
+-   Functions are really important in this context!
+
+## Simple example in R
+
+- Non-functional programming
+
+```{r}
+#| echo: true
+
+x <- 1
+y <- 2
+z <- x + y
+z
+```
+## Simple example in R
+
+- Functional programming
+
+```{r}
+#| echo: true
+
+add_two_numbers <- function(x, y) {
+  x + y
+}
+add_two_numbers(1, 2)
+```
+
+
+## The purrr package
+
+- A toolbox for functional programming
+
+- Many of the functions in purrr are alternatives to `for` loops
+
+- Code with `{purrr}` is shorter and clearer than `for` loops
+
+- Knowing how to use `{purrr}` allows you to use the `{furrr}` package: it has the same syntax, but allows you to run code in parallel
+
+
+::: footer
+Source: [Hadley Wickham](https://www.youtube.com/watch?v=EGAs7zuRutY)
+:::
+
+## Package version
+
+-  Check if the version installed is >= 1.0.0.
+
+```{r}
+#| echo: true
+packageVersion("purrr")
+```
+
+- If not, install the latest version:
+
+```{r}
+#| eval: false
+#| echo: true
+install.packages("purrr")
+```
+
+## My favorite functions
+
+- purrr has many functions!
+
+- Many work similarly.
+
+- We will focus on some today :)
+
+    - `map()`
+
+    - `map_vec()`
+
+    - `list_c()`, `list_rbind()`, `list_cbind()`
+
+    - `pluck()`
+
+    - `set_names()`
+    
+- Examples on daily tasks!
+    
+# Let's start!
+
+```{r}
+library(tidyverse)
+```
+    
+
+## `map()`
+
+-   `map()` is the most important function in purrr
+
+- Given an object (can be a vector or a list) we want to apply a function to each element of that object.
+
+- It returns a list
+
+```{r}
+#| eval: false
+#| echo: true
+# Structure
+map(vector_or_list, name_of_the_function)
+```
+
+- There are many functions that start with `map_*()` and have similar behavior
+
+##  Simple example of `map()`
+
+```{r}
+# Vector that we want to apply the function
+countries_mercosul <- c("Brazil", "Argentina",
+                        "Uruguay", "Paraguay")
+map(countries_mercosul, str_to_upper)
+```
+
+## What if I want a vector to be returned? {.center}
+
+
+## `map_vec()`
+
+-  `map_vec()` is a variant of `map()` that always returns a vector!
+
+-  It is useful when you want to apply a function to each element of a vector and return a vector.
+
+-  It is equivalent to `map() |> list_c()`
+
+
+## Example with `map_vec()`
+
+```{r}
+map_vec(countries_mercosul, str_to_upper) 
+```
+
+Or: 
+
+```{r}
+map(countries_mercosul, str_to_upper) |> list_c()
+```
+
+
+## What is `list_c()`?
+
+- `list_c()` is a function that takes a **list** and returns a **vector**
+
+- It is useful to use after `map()`, and you want to convert the list into a vector
+
+```{r}
+map(countries_mercosul, str_to_upper) |> list_c()
+```
+
+## `pluck()`
+
+- `pluck()` is a function that extracts a single element from a list
+
+```{r}
+list_mercosul <- map(countries_mercosul, str_to_upper)
+list_mercosul
+
+list_mercosul |> pluck(1)
+```
+
+## `pluck()` with nested lists
+
+- `pluck()` can be used to extract elements from nested lists
+
+```{r}
+
+```
+
+## `list_rbind()`, `list_cbind()`
+
+- `list_rbind()` and `list_cbind()` are functions that bind lists together (by row or column) and returns a tibble.
+
+TO DO
+
+## `set_names()`
+
+- `set_names()` is a function that sets names to a vector or list
+
+```{r}
+
+```
+
+TO DO
+
+# Examples on my daily tasks
+
+TO DO
+
+# Learn more
+
+-   [Documentation of the purrr package](https://purrr.tidyverse.org/index.html)
+
+- - <https://purrr.tidyverse.org/reference/list_c.html>
+
+-   [News on the purrr package: version 1.0.0](https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/)
+
+-   Video: [Hadley Wickham \| {purrr} 1.0: A complete and consistent set of tools for functions and vectors](https://www.youtube.com/watch?v=EGAs7zuRutY)
+
