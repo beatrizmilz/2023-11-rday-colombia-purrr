@@ -134,7 +134,7 @@ convert_reais_to_us_dollars(1320)
 - We can use the function `as.Date()` to convert the date format, but we need to specify the format of the date.
 
 ```{r}
-as.Date("21/01/2021", format = "%d/%m/%Y")
+as.Date("24/11/2023", format = "%d/%m/%Y")
 ```
 
 - We can create a function to do this for us!
