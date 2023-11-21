@@ -5,24 +5,25 @@ author: "[Beatriz Milz](https://beamilz.com)"
 format: 
   rladies-revealjs:
     footer: "Slides por [Beatriz Milz](https://beamilz.com) (@BeaMilz), feito com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html) e [Quarto R-Ladies Theme](https://github.com/beatrizmilz/quarto-rladies-theme#quarto-r-ladies-theme)."
+    logo: "https://github.com/beatrizmilz/2023-11-rday-colombia-purrr/blob/main/_extensions/beatrizmilz/rladies/logo.png?raw=true"
 incremental: false
 knitr:
   opts_chunk: 
     echo: true
 ---
 
-```{css}
+## Who am I? {.center}
+
+```{css, echo = FALSE}
 .reveal pre code {
   font-size: 1.5em !important;
 }
 ```
 
 
-## Who am I? {.center .aboutmeslide}
-
 -   Co-organizer [R-Ladies São Paulo](https://rladies-sp.org)
 
--   PhD Candidate in Environmental Sciencesat the University of Sao Paulo, Brazil
+-   PhD Candidate in Environmental Sciences at the University of Sao Paulo, Brazil
 
 -   Teacher and Consultant at [Curso-R](https://curso-r.com/)
 
@@ -162,7 +163,7 @@ map(countries_mercosul, str_to_upper)
 ## What if I want a vector to be returned? {.center}
 
 
-## `map_vec()`
+## We can use `map_vec()`!
 
 -  `map_vec()` is a variant of `map()` that always returns a vector!
 
@@ -170,21 +171,13 @@ map(countries_mercosul, str_to_upper)
 
 -  It is equivalent to `map() |> list_c()`
 
-
-## Example with `map_vec()`
-
 ```{r}
 map_vec(countries_mercosul, str_to_upper) 
 ```
 
-Or: 
-
-```{r}
-map(countries_mercosul, str_to_upper) |> list_c()
-```
 
 
-## What is `list_c()`?
+## We also can use `list_c()`!
 
 - `list_c()` is a function that takes a **list** and returns a **vector**
 
@@ -198,19 +191,81 @@ map(countries_mercosul, str_to_upper) |> list_c()
 
 - `pluck()` is a function that extracts a single element from a list
 
-```{r}
-list_mercosul <- map(countries_mercosul, str_to_upper)
-list_mercosul
 
-list_mercosul |> pluck(1)
+
+- We will use a simple list for the examples:
+
+```{r}
+map(countries_mercosul, str_to_upper)
 ```
+
+
+## Example of `pluck()`
+
+```{r}
+map(countries_mercosul, str_to_upper) |> pluck(1)
+map(countries_mercosul, str_to_upper) |> pluck(2)
+map(countries_mercosul, str_to_upper) |> pluck(3)
+map(countries_mercosul, str_to_upper) |> pluck(4)
+```
+## Why we don't use `[[ ]]` instead?
+
+
+- With `pluck()`:
+
+```{r}
+map(countries_mercosul, str_to_upper) |> pluck(1)
+```
+
+- With  `[[ ]]`:
+
+```{r}
+#| error: true
+map(countries_mercosul, str_to_upper)[[1]]
+```
+
+
+## Pluck is **pipeable**! `|>`
+
+- With `pluck()`:
+
+```{r}
+map(countries_mercosul, str_to_upper) |>
+  pluck(1)
+```
+
+- With  `[[ ]]`:
+
+```{r}
+#| error: true
+map(countries_mercosul, str_to_upper) |> 
+  .[[1]]
+```
+
+
+## Pluck is safer! 
+
+- If the element does not exist, it returns `NULL` instead of an error.
+
+- With `pluck()`:
+
+```{r}
+map(countries_mercosul, str_to_upper) |> pluck(5)
+```
+- With  `[[ ]]`:
+
+```{r}
+#| error: true
+map(countries_mercosul, str_to_upper)[[5]]
+```
+
 
 ## `pluck()` with nested lists
 
-- `pluck()` can be used to extract elements from nested lists
+- `pluck()` can be used to extract elements from nested lists. That's where it shines!
 
 ```{r}
-
+# TO DO!
 ```
 
 ## `list_rbind()`, `list_cbind()`
