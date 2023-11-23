@@ -380,11 +380,33 @@ map(countries_mercosul, str_to_upper)[[5]]
 
 > "I have a folder with multiple files that I want to import. How can I do that?"
 
-- Remember: to use `map()`, we need a vector or a list of the elements that we want to apply the function + a function.
+- Remember: to use `map()`, we need:
+
+  - a vector or a list of the elements that we want to apply the function; 
+  
+  - a function.
+  
+## Example
+
+If we want to import **one** file, we can use `readxl::read_excel()`:
+
+```{r}
+library(readxl)
+recent_chla <- read_excel("data/ex-1/RelatorioQualidadeAguasSuperficiais_clorofila-a_2018-2022.xlsx")
+glimpse(recent_chla)
+```
 
 ## Example
 
-- Let's start with the vector of files that we want to import:
+- But we want to import **multiple** files!
+
+- The function is the same (`readxl::read_excel()`), but we need to apply it to multiple files.
+
+- We need to create a vector with all the file paths!
+
+## Example
+
+- Let's start creating the vector of files that we want to import:
 
 ```{r}
 #| eval: true
@@ -401,17 +423,24 @@ files_to_import
 - Now, we need a function that imports the files: `readxl::read_excel()`:
 
 ```{r}
-library(readxl)
-
 result_import <- files_to_import |> 
   map(read_excel)
 
-class(result_import)
+result_import
 ```
 
 ## Example
 
+- Remember: `map()` returns a list!
+
+```{r}
+class(result_import)
+```
+
 - But we want to bind the dataframes by row!
+
+
+## Example
 
 - We can use `list_rbind()`:
 
