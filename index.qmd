@@ -50,7 +50,7 @@ library(tidyverse)
 
 - What are **my** favorite `{purrr}` functions?
 
-- How can you use `{purrr}` in your workflow?
+- Example of how `{purrr}` helps in my workflow!
 
 # Let's go!
 
@@ -97,7 +97,7 @@ A function has:
   
   - a name
   
-  - one or more arguments
+  - arguments
 
   - a body
 
@@ -267,7 +267,6 @@ map(countries_mercosul, str_to_upper)
 
 -  It is useful when you want to apply a function to each element of a vector and return a vector.
 
--  It is equivalent to `map() |> list_c()`
 
 ```{r}
 map_vec(countries_mercosul, str_to_upper) 
@@ -290,6 +289,8 @@ map(countries_mercosul, str_to_upper) |> list_c()
 - `pluck()` is a function that extracts a single element from a list
 
 
+- `pluck()` can be used to extract elements from nested lists. That's where it shines!
+
 
 - We will use a simple list for the examples:
 
@@ -306,6 +307,8 @@ map(countries_mercosul, str_to_upper) |> pluck(2)
 map(countries_mercosul, str_to_upper) |> pluck(3)
 map(countries_mercosul, str_to_upper) |> pluck(4)
 ```
+
+
 ## Why we don't use `[[ ]]` instead?
 
 
@@ -358,31 +361,83 @@ map(countries_mercosul, str_to_upper)[[5]]
 ```
 
 
-## `pluck()` with nested lists
-
-- `pluck()` can be used to extract elements from nested lists. That's where it shines!
-
-```{r}
-# TO DO!
-```
-
 ## `list_rbind()`, `list_cbind()`
 
-- `list_rbind()` and `list_cbind()` are functions that bind lists together (by row or column) and returns a tibble.
+- `list_rbind()` and `list_cbind()` are functions that bind lists that contains dataframes (by row or column) and returns a tibble.
 
-TO DO
 
-# Examples on my daily tasks
+- Let's see a real life example!
 
-TO DO
+
+# Example on my daily tasks
+
+* I had to pick one to fit in the time we have today!
+
+
+
+
+## Example
+
+> "I have a folder with multiple files that I want to import. How can I do that?"
+
+- Remember: to use `map()`, we need a vector or a list of the elements that we want to apply the function + a function.
+
+## Example
+
+- Let's start with the vector of files that we want to import:
+
+```{r}
+#| eval: true
+#| echo: true
+files_to_import <-
+  list.files(path = "data/ex-1",
+             pattern = "*.xlsx",
+             full.names = TRUE)
+files_to_import
+```
+
+## Example
+
+- Now, we need a function that imports the files: `readxl::read_excel()`:
+
+```{r}
+library(readxl)
+
+result_import <- files_to_import |> 
+  map(read_excel)
+
+class(result_import)
+```
+
+## Example
+
+- But we want to bind the dataframes by row!
+
+- We can use `list_rbind()`:
+
+```{r}
+result_import_df <- files_to_import |> 
+  map(read_excel) |> 
+  list_rbind()
+
+glimpse(result_import_df)
+```
+
+# Final thoughts
+
+- `purrr` is a very powerful package!
+
+- I use it a lot in my daily tasks!
+
+- Today, I focused on helping you to understand the basics to start using `purrr`. But there is other functions that you can learn!
+
 
 # Learn more
 
 -   [Documentation of the purrr package](https://purrr.tidyverse.org/index.html)
 
-- - <https://purrr.tidyverse.org/reference/list_c.html>
-
 -   [News on the purrr package: version 1.0.0](https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/)
 
 -   Video: [Hadley Wickham \| {purrr} 1.0: A complete and consistent set of tools for functions and vectors](https://www.youtube.com/watch?v=EGAs7zuRutY)
 
+- [R for Data Science - 2nd Ed. - Program](https://r4ds.hadley.nz/program)

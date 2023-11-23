@@ -427,7 +427,7 @@
 <li><p>What is functional programming?</p></li>
 <li><p>What is the <a href="https://purrr.tidyverse.org/">purrr</a> package?</p></li>
 <li><p>What are <strong>my</strong> favorite <a href="https://purrr.tidyverse.org/">purrr</a> functions?</p></li>
-<li><p>How can you use <a href="https://purrr.tidyverse.org/">purrr</a> in your workflow?</p></li>
+<li><p>Example of how <a href="https://purrr.tidyverse.org/">purrr</a> helps in my workflow!</p></li>
 </ul></section><section><section id="lets-go" class="title-slide slide level1 center"><h1>Let’s go!</h1>
 
 </section><section id="functional-programming-in-r" class="slide level2 center"><h2>Functional programming in R</h2>
@@ -443,14 +443,14 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tue Nov 21 10:19:11 -03 2023</code></pre>
+<pre><code>Thu Nov 23 17:05:12 -03 2023</code></pre>
 </div>
 </div>
 <p>You can use this function in R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2023-11-21 10:19:11 -03"</code></pre>
+<pre><code>[1] "2023-11-23 17:05:12 -03"</code></pre>
 </div>
 </div>
 </section><section id="we-use-functions-all-the-time" class="slide level2"><h2>We use functions all the time!</h2>
@@ -467,7 +467,7 @@
 <p>A function has:</p>
 <ul>
 <li><p>a name</p></li>
-<li><p>one or more arguments</p></li>
+<li><p>arguments</p></li>
 <li><p>a body</p></li>
 <li><p>a return value (it is the last line of the function)</p></li>
 </ul>
@@ -624,7 +624,6 @@
 <ul>
 <li><p><code>map_vec()</code> is a variant of <code>map()</code> that always returns a vector!</p></li>
 <li><p>It is useful when you want to apply a function to each element of a vector and return a vector.</p></li>
-<li><p>It is equivalent to <code>map() |&gt; list_c()</code></p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">map_vec</span>(countries_mercosul, str_to_upper) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -646,6 +645,7 @@
 </section><section id="purrrpluck" class="slide level2"><h2><code>purrr::pluck()</code></h2>
 <ul>
 <li><p><code>pluck()</code> is a function that extracts a single element from a list</p></li>
+<li><p><code>pluck()</code> can be used to extract elements from nested lists. That’s where it shines!</p></li>
 <li><p>We will use a simple list for the examples:</p></li>
 </ul>
 <div class="cell">
@@ -745,33 +745,108 @@
 <pre><code>Error in map(countries_mercosul, str_to_upper)[[5]]: subscript out of bounds</code></pre>
 </div>
 </div>
-</section><section id="pluck-with-nested-lists" class="slide level2"><h2>
-<code>pluck()</code> with nested lists</h2>
-<ul>
-<li>
-<code>pluck()</code> can be used to extract elements from nested lists. That’s where it shines!</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># TO DO!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section><section id="list_rbind-list_cbind" class="slide level2"><h2>
 <code>list_rbind()</code>, <code>list_cbind()</code>
 </h2>
 <ul>
-<li>
-<code>list_rbind()</code> and <code>list_cbind()</code> are functions that bind lists together (by row or column) and returns a tibble.</li>
+<li><p><code>list_rbind()</code> and <code>list_cbind()</code> are functions that bind lists that contains dataframes (by row or column) and returns a tibble.</p></li>
+<li><p>Let’s see a real life example!</p></li>
+</ul></section></section><section><section id="example-on-my-daily-tasks" class="title-slide slide level1 center"><h1>Example on my daily tasks</h1>
+<ul>
+<li>I had to pick one to fit in the time we have today!</li>
+</ul></section><section id="example-1" class="slide level2"><h2>Example</h2>
+<blockquote>
+<p>“I have a folder with multiple files that I want to import. How can I do that?”</p>
+</blockquote>
+<ul>
+<li>Remember: to use <code>map()</code>, we need a vector or a list of the elements that we want to apply the function + a function.</li>
+</ul></section><section id="example-2" class="slide level2"><h2>Example</h2>
+<ul>
+<li>Let’s start with the vector of files that we want to import:</li>
 </ul>
-<p>TO DO</p>
-</section></section><section id="examples-on-my-daily-tasks" class="title-slide slide level1 center"><h1>Examples on my daily tasks</h1>
-<p>TO DO</p>
-</section><section id="learn-more" class="title-slide slide level1 center"><h1>Learn more</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>files_to_import <span class="ot">&lt;-</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">"data/ex-1"</span>,</span>
+<span id="cb50-3"><a href="#cb50-3"></a>             <span class="at">pattern =</span> <span class="st">"*.xlsx"</span>,</span>
+<span id="cb50-4"><a href="#cb50-4"></a>             <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-5"><a href="#cb50-5"></a>files_to_import</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data/ex-1/RelatorioQualidadeAguasSuperficiais_clorofila-a_2008-2012.xlsx"
+[2] "data/ex-1/RelatorioQualidadeAguasSuperficiais_clorofila-a_2013-2017.xlsx"
+[3] "data/ex-1/RelatorioQualidadeAguasSuperficiais_clorofila-a_2018-2022.xlsx"
+[4] "data/ex-1/RelatorioQualidadeAguasSuperficiais_PT_2008-2012.xlsx"         
+[5] "data/ex-1/RelatorioQualidadeAguasSuperficiais_PT_2013-2017.xlsx"         
+[6] "data/ex-1/RelatorioQualidadeAguasSuperficiais_PT_2018-2022.xlsx"         </code></pre>
+</div>
+</div>
+</section><section id="example-3" class="slide level2"><h2>Example</h2>
+<ul>
+<li>Now, we need a function that imports the files: <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb52-2"><a href="#cb52-2"></a></span>
+<span id="cb52-3"><a href="#cb52-3"></a>result_import <span class="ot">&lt;-</span> files_to_import <span class="sc">|&gt;</span> </span>
+<span id="cb52-4"><a href="#cb52-4"></a>  <span class="fu">map</span>(read_excel)</span>
+<span id="cb52-5"><a href="#cb52-5"></a></span>
+<span id="cb52-6"><a href="#cb52-6"></a><span class="fu">class</span>(result_import)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+</section><section id="example-4" class="slide level2"><h2>Example</h2>
+<ul>
+<li><p>But we want to bind the dataframes by row!</p></li>
+<li><p>We can use <code>list_rbind()</code>:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>result_import_df <span class="ot">&lt;-</span> files_to_import <span class="sc">|&gt;</span> </span>
+<span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">map</span>(read_excel) <span class="sc">|&gt;</span> </span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">list_rbind</span>()</span>
+<span id="cb54-4"><a href="#cb54-4"></a></span>
+<span id="cb54-5"><a href="#cb54-5"></a><span class="fu">glimpse</span>(result_import_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 664
+Columns: 26
+$ `Período DE`              &lt;chr&gt; "01/01/2008", "01/01/2008", "01/01/2008", "0…
+$ `Período ATE`             &lt;chr&gt; "31/12/2012", "31/12/2012", "31/12/2012", "3…
+$ Cod_Interaguas            &lt;chr&gt; "1386", "1386", "1386", "1386", "1386", "138…
+$ `Tipo Rede`               &lt;chr&gt; "Rede Básica", "Rede Básica", "Rede Básica",…
+$ UGRHI                     &lt;chr&gt; "06 - ALTO TIÊTE", "06 - ALTO TIÊTE", "06 - …
+$ `Código Ponto`            &lt;chr&gt; "BILL02030", "BILL02030", "BILL02030", "BILL…
+$ `Status Ponto`            &lt;chr&gt; "Ativo", "Ativo", "Ativo", "Ativo", "Ativo",…
+$ `Data Coleta`             &lt;chr&gt; "22/01/2008", "26/03/2008", "14/05/2008", "1…
+$ `Hora Coleta`             &lt;chr&gt; "11:20", "11:22", "12:30", "11:50", "11:20",…
+$ Parametro                 &lt;chr&gt; "Clorofila-a", "Clorofila-a", "Clorofila-a",…
+$ Sinal                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ Valor                     &lt;chr&gt; "18,71000000", "28,87000000", "31,19000000",…
+$ Unidade                   &lt;chr&gt; "µg/L", "µg/L", "µg/L", "µg/L", "µg/L", "µg/…
+$ `Tipo Parâmetro`          &lt;chr&gt; "5- Hidrobiológicos", "5- Hidrobiológicos", …
+$ `Sistema Hídrico`         &lt;chr&gt; "Reservatório Billings - BILL", "Reservatóri…
+$ `Tipo de Sistema Hídrico` &lt;chr&gt; "Reservatório (Lêntico)", "Reservatório (Lên…
+$ CLASSE                    &lt;chr&gt; "Classe 2", "Classe 2", "Classe 2", "Classe …
+$ Município                 &lt;chr&gt; "SÃO PAULO", "SÃO PAULO", "SÃO PAULO", "SÃO …
+$ UF                        &lt;chr&gt; "SP", "SP", "SP", "SP", "SP", "SP", "SP", "S…
+$ `Inicio Operação`         &lt;chr&gt; "01/01/2007", "01/01/2007", "01/01/2007", "0…
+$ `Fim Operação`            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ Latitude                  &lt;chr&gt; "23 43 04", "23 43 04", "23 43 04", "23 43 0…
+$ Longitude                 &lt;chr&gt; "46 39 51", "46 39 51", "46 39 51", "46 39 5…
+$ Altitude                  &lt;chr&gt; "743", "743", "743", "743", "743", "743", "7…
+$ Localização               &lt;chr&gt; "No meio do corpo central, cerca de 1,5 km d…
+$ Captação                  &lt;chr&gt; "N", "N", "N", "N", "N", "N", "N", "N", "N",…</code></pre>
+</div>
+</div>
+</section></section><section id="final-thoughts" class="title-slide slide level1 center"><h1>Final thoughts</h1>
+<ul>
+<li><p><code>purrr</code> is a very powerful package!</p></li>
+<li><p>I use it a lot in my daily tasks!</p></li>
+<li><p>Today, I focused on helping you to understand the basics to start using <code>purrr</code>. But there is other functions that you can learn!</p></li>
+</ul></section><section id="learn-more" class="title-slide slide level1 center"><h1>Learn more</h1>
 <ul>
 <li><p><a href="https://purrr.tidyverse.org/index.html">Documentation of the purrr package</a></p></li>
-<li><ul>
-<li><a href="https://purrr.tidyverse.org/reference/list_c.html" class="uri">https://purrr.tidyverse.org/reference/list_c.html</a></li>
-</ul></li>
 <li><p><a href="https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/">News on the purrr package: version 1.0.0</a></p></li>
 <li><p>Video: <a href="https://www.youtube.com/watch?v=EGAs7zuRutY">Hadley Wickham | {purrr} 1.0: A complete and consistent set of tools for functions and vectors</a></p></li>
+<li><p><a href="https://r4ds.hadley.nz/program">R for Data Science - 2nd Ed. - Program</a></p></li>
 </ul>
 
 <img src="https://github.com/beatrizmilz/2023-11-rday-colombia-purrr/blob/main/_extensions/beatrizmilz/rladies/logo.png?raw=true" class="slide-logo r-stretch"><div class="footer footer-default">
