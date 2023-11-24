@@ -21,13 +21,11 @@ knitr:
 library(tidyverse)
 ```
 
-
 ```{css, echo = FALSE}
 .reveal pre code {
   font-size: 1.5em !important;
 }
 ```
-
 
 -   Co-organizer [R-Ladies São Paulo](https://rladies-sp.org)
 
@@ -39,18 +37,26 @@ library(tidyverse)
 
 -   Contact:
 
-    -   Email: [milz.bea@gmail.com](mailto:milz.bea@gmail.com)
+    -   Email: [milz.bea\@gmail.com](mailto:milz.bea@gmail.com)
     -   More in my website: [beamilz.com](https://beamilz.com/about-es)
+
+## Leading the translation of R4DS to Portuguese {.center}
+
+Inspired by the Spanish version: <https://es.r4ds.hadley.nz/>
+
+[![](img/r4ds.png){fig-align="center" width="8%"}](https://cienciadedatos.github.io/pt-r4ds/)
+
+<https://cienciadedatos.github.io/pt-r4ds/>
 
 ## Plan for today {.center}
 
-- What is functional programming?
+-   What is functional programming?
 
-- What is the `{purrr}` package?
+-   What is the `{purrr}` package?
 
-- What are **my** favorite `{purrr}` functions?
+-   What are **my** favorite `{purrr}` functions?
 
-- Example of how `{purrr}` helps in my workflow!
+-   Example of how `{purrr}` helps in my workflow!
 
 # Let's go!
 
@@ -60,12 +66,11 @@ library(tidyverse)
 
 -   Functions are really important in this context!
 
-
 ## Let's remember: what is a function in R?
 
--  A function is a set of instructions that takes an input (arguments) and returns an output.
+-   A function is a set of instructions that takes an input (arguments) and returns an output.
 
-- You can encapsulate and reuse code.
+-   You can encapsulate and reuse code.
 
 ## Example
 
@@ -74,6 +79,7 @@ Instead of writing this command in the terminal:
 ```{bash}
 date
 ```
+
 You can use this function in R:
 
 ```{r}
@@ -82,34 +88,33 @@ Sys.time()
 
 ## We use functions all the time!
 
-- `library()`
-- `install.packages()`
-- `c()`
-- `help()`
-- `mean()`
-- `sum()`
-- `paste()`
-- ...
+-   `library()`
+-   `install.packages()`
+-   `c()`
+-   `help()`
+-   `mean()`
+-   `sum()`
+-   `paste()`
+-   ...
 
 ## Structure of a function
 
 A function has:
-  
-  - a name
-  
-  - arguments
 
-  - a body
+-   a name
 
-  - a return value (it is the last line of the function)
-  
-```r
+-   arguments
+
+-   a body
+
+-   a return value (it is the last line of the function)
+
+``` r
 name_of_function <- function(argument1, argument2, ...) {
   body
   return(value)
 }
 ```
-  
 
 ## Simple example of how to create a function
 
@@ -121,7 +126,7 @@ convert_reais_to_us_dollars <- function(reais) {
 }
 ```
 
-- Minimum wage in Brazil per month in US Dollars:
+-   Minimum wage in Brazil per month in US Dollars:
 
 ```{r}
 convert_reais_to_us_dollars(1320)
@@ -129,15 +134,15 @@ convert_reais_to_us_dollars(1320)
 
 ## Example of a more useful function
 
-- In Brazil, we use the date format `dd/mm/yyyy`: 21/01/2021.
+-   In Brazil, we use the date format `dd/mm/yyyy`: 21/01/2021.
 
-- We can use the function `as.Date()` to convert the date format, but we need to specify the format of the date.
+-   We can use the function `as.Date()` to convert the date format, but we need to specify the format of the date.
 
 ```{r}
 as.Date("24/11/2023", format = "%d/%m/%Y")
 ```
 
-- We can create a function to do this for us!
+-   We can create a function to do this for us!
 
 ```{r}
 convert_date_br <- function(date){
@@ -150,14 +155,13 @@ convert_date_br("14/10/2023")
 
 ## The purrr package
 
-- A toolbox for functional programming
+-   A toolbox for functional programming
 
-- Many of the functions in purrr are alternatives to `for` loops
+-   Many of the functions in purrr are alternatives to `for` loops
 
-- Code with `{purrr}` is shorter and clearer than `for` loops
+-   Code with `{purrr}` is shorter and clearer than `for` loops
 
-- Knowing how to use `{purrr}` allows you to use the `{furrr}` package: it has the same syntax, but allows you to run code in parallel
-
+-   Knowing how to use `{purrr}` allows you to use the `{furrr}` package: it has the same syntax, but allows you to run code in parallel
 
 ::: footer
 Source: [Hadley Wickham](https://www.youtube.com/watch?v=EGAs7zuRutY)
@@ -165,14 +169,14 @@ Source: [Hadley Wickham](https://www.youtube.com/watch?v=EGAs7zuRutY)
 
 ## Package version
 
--  Check if the version installed is >= 1.0.0.
+-   Check if the version installed is \>= 1.0.0.
 
 ```{r}
 #| echo: true
 packageVersion("purrr")
 ```
 
-- If not, install the latest version:
+-   If not, install the latest version:
 
 ```{r}
 #| eval: false
@@ -182,37 +186,35 @@ install.packages("purrr")
 
 ## My favorite functions
 
-- purrr has many functions!
+-   purrr has many functions!
 
-- Many work similarly.
+-   Many work similarly.
 
-- We will focus on some today :)
+-   We will focus on some today :)
 
-    - `purrr::map()`
+    -   `purrr::map()`
 
-    - `purrr::map_vec()`
+    -   `purrr::map_vec()`
 
-    - `purrr::list_c()`, `purrr::list_rbind()`, `purrr::list_cbind()`
+    -   `purrr::list_c()`, `purrr::list_rbind()`, `purrr::list_cbind()`
 
-    - `purrr::pluck()`
+    -   `purrr::pluck()`
 
-    
-- Examples on daily tasks!
-    
+-   Examples on daily tasks!
+
 # Let's start!
 
 ```{r}
 library(tidyverse)
 ```
-    
 
 ## `purrr::map()`
 
 -   `purrr::map()` is the most important function in purrr
 
-- Given an object (can be a vector or a list) we want to apply a function to each element of that object.
+-   Given an object (can be a vector or a list) we want to apply a function to each element of that object.
 
-- It returns a list
+-   It returns a list
 
 ```{r}
 #| eval: false
@@ -221,9 +223,9 @@ library(tidyverse)
 map(vector_or_list, name_of_the_function)
 ```
 
-- There are many functions that start with `map_*()` and have similar behavior
+-   There are many functions that start with `map_*()` and have similar behavior
 
-##  Simple example of `purrr::map()`
+## Simple example of `purrr::map()`
 
 ```{r}
 # Vector that we want to apply the function
@@ -234,25 +236,21 @@ map(countries_mercosul, str_to_upper)
 
 ## What if I want a vector to be returned? {.center}
 
-
 ## We can use `purrr::map_vec()`!
 
--  `map_vec()` is a variant of `map()` that always returns a vector!
+-   `map_vec()` is a variant of `map()` that always returns a vector!
 
--  It is useful when you want to apply a function to each element of a vector and return a vector.
-
+-   It is useful when you want to apply a function to each element of a vector and return a vector.
 
 ```{r}
 map_vec(countries_mercosul, str_to_upper) 
 ```
 
-
-
 ## We also can use `purrr::list_c()`!
 
-- `list_c()` is a function that takes a **list** and returns a **vector**
+-   `list_c()` is a function that takes a **list** and returns a **vector**
 
-- It is useful to use after `map()`, and you want to convert the list into a vector
+-   It is useful to use after `map()`, and you want to convert the list into a vector
 
 ```{r}
 map(countries_mercosul, str_to_upper) |> list_c()
@@ -260,18 +258,15 @@ map(countries_mercosul, str_to_upper) |> list_c()
 
 ## `purrr::pluck()`
 
-- `pluck()` is a function that extracts a single element from a list
+-   `pluck()` is a function that extracts a single element from a list
 
+-   `pluck()` can be used to extract elements from nested lists. That's where it shines!
 
-- `pluck()` can be used to extract elements from nested lists. That's where it shines!
-
-
-- We will use a simple list for the examples:
+-   We will use a simple list for the examples:
 
 ```{r}
 map(countries_mercosul, str_to_upper)
 ```
-
 
 ## Example of `purrr::pluck()`
 
@@ -282,34 +277,31 @@ map(countries_mercosul, str_to_upper) |> pluck(3)
 map(countries_mercosul, str_to_upper) |> pluck(4)
 ```
 
-
 ## Why we don't use `[[ ]]` instead?
 
-
-- With `pluck()`:
+-   With `pluck()`:
 
 ```{r}
 map(countries_mercosul, str_to_upper) |> pluck(1)
 ```
 
-- With  `[[ ]]`:
+-   With `[[ ]]`:
 
 ```{r}
 #| error: true
 map(countries_mercosul, str_to_upper)[[1]]
 ```
 
-
 ## Pluck is **pipeable**! `|>`
 
-- With `pluck()`:
+-   With `pluck()`:
 
 ```{r}
 map(countries_mercosul, str_to_upper) |>
   pluck(1)
 ```
 
-- With  `[[ ]]`:
+-   With `[[ ]]`:
 
 ```{r}
 #| error: true
@@ -317,49 +309,43 @@ map(countries_mercosul, str_to_upper) |>
   .[[1]]
 ```
 
+## Pluck is safer!
 
-## Pluck is safer! 
+-   If the element does not exist, it returns `NULL` instead of an error.
 
-- If the element does not exist, it returns `NULL` instead of an error.
-
-- With `pluck()`:
+-   With `pluck()`:
 
 ```{r}
 map(countries_mercosul, str_to_upper) |> pluck(5)
 ```
-- With  `[[ ]]`:
+
+-   With `[[ ]]`:
 
 ```{r}
 #| error: true
 map(countries_mercosul, str_to_upper)[[5]]
 ```
 
-
 ## `list_rbind()`, `list_cbind()`
 
-- `list_rbind()` and `list_cbind()` are functions that bind lists that contains dataframes (by row or column) and returns a tibble.
+-   `list_rbind()` and `list_cbind()` are functions that bind lists that contains dataframes (by row or column) and returns a tibble.
 
-
-- Let's see a real life example!
-
+-   Let's see a real life example!
 
 # Example on my daily tasks
 
-* I had to pick one to fit in the time we have today!
-
-
-
+-   I had to pick one to fit in the time we have today!
 
 ## Example
 
 > "I have a folder with multiple files that I want to import. How can I do that?"
 
-- Remember: to use `map()`, we need:
+-   Remember: to use `map()`, we need:
 
-  - a vector or a list of the elements that we want to apply the function; 
-  
-  - a function.
-  
+    -   a vector or a list of the elements that we want to apply the function;
+
+    -   a function.
+
 ## Example
 
 If we want to import **one** file, we can use `readxl::read_excel()`:
@@ -372,15 +358,15 @@ glimpse(recent_chla)
 
 ## Example
 
-- But we want to import **multiple** files!
+-   But we want to import **multiple** files!
 
-- The function is the same (`readxl::read_excel()`), but we need to apply it to multiple files.
+-   The function is the same (`readxl::read_excel()`), but we need to apply it to multiple files.
 
-- We need to create a vector with all the file paths!
+-   We need to create a vector with all the file paths!
 
 ## Example
 
-- Let's start creating the vector of files that we want to import:
+-   Let's start creating the vector of files that we want to import:
 
 ```{r}
 #| eval: true
@@ -394,7 +380,7 @@ files_to_import
 
 ## Example
 
-- Now, we need a function that imports the files: `readxl::read_excel()`:
+-   Now, we need a function that imports the files: `readxl::read_excel()`:
 
 ```{r}
 result_import <- files_to_import |> 
@@ -405,18 +391,17 @@ result_import
 
 ## Example
 
-- Remember: `map()` returns a list!
+-   Remember: `map()` returns a list!
 
 ```{r}
 class(result_import)
 ```
 
-- But we want to bind the dataframes by row!
-
+-   But we want to bind the dataframes by row!
 
 ## Example
 
-- We can use `list_rbind()`:
+-   We can use `list_rbind()`:
 
 ```{r}
 result_import_df <- files_to_import |> 
@@ -428,12 +413,11 @@ glimpse(result_import_df)
 
 # Final thoughts
 
-- `purrr` is a very powerful package!
+-   `purrr` is a very powerful package!
 
-- I use it a lot in my daily tasks!
+-   I use it a lot in my daily tasks!
 
-- Today, I focused on helping you to understand the basics to start using `purrr`. But there is other functions that you can learn!
-
+-   Today, I focused on helping you to understand the basics to start using `purrr`. But there is other functions that you can learn!
 
 # Learn more
 
@@ -443,4 +427,4 @@ glimpse(result_import_df)
 
 -   Video: [Hadley Wickham \| {purrr} 1.0: A complete and consistent set of tools for functions and vectors](https://www.youtube.com/watch?v=EGAs7zuRutY)
 
-- [R for Data Science - 2nd Ed. - Program](https://r4ds.hadley.nz/program)
+-   [R for Data Science - 2nd Ed. - Program](https://r4ds.hadley.nz/program)
