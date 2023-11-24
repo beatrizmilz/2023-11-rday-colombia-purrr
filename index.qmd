@@ -146,33 +146,6 @@ convert_date_br <- function(date){
 convert_date_br("14/10/2023")
 ```
 
-# Back to functional programming!
-
-## Simple example in R
-
-- Non-functional programming
-
-```{r}
-#| echo: true
-
-x <- 1
-y <- 2
-z <- x + y
-z
-```
-## Simple example in R
-
-- Functional programming
-
-```{r}
-#| echo: true
-
-add_two_numbers <- function(x, y) {
-  x + y
-}
-add_two_numbers(1, 2)
-```
-
 
 ## The purrr package
 
