@@ -146,6 +146,7 @@ convert_date_br <- function(date){
 convert_date_br("14/10/2023")
 ```
 
+# Let's purrr!
 
 ## The purrr package
 
